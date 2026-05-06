@@ -1,3 +1,3 @@
-# Welcome to your Lovable project
+# Performance Tracker
 
-TODO: Document your project here
+
