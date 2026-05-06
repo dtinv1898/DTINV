@@ -385,6 +385,12 @@ function OORCDashboard({ data }: { data: OORCRow[] }) {
     setDonutSelection(selectedOO === 'All' ? 'AGG_OO' : (firstIdx >= 0 ? `PI|${firstIdx}` : 'AGG_OO'));
   }, [selectedOO]);
 
+  useEffect(() => {
+    if (quarterlyQuarterFilter !== 'All' && !allowedQuarters.includes(quarterlyQuarterFilter)) {
+      setQuarterlyQuarterFilter('All');
+    }
+  }, [selectedSemester, allowedQuarters, quarterlyQuarterFilter]);
+
   // Debug aggregates (per OO) to help track small discrepancies
   const debugAgg = (() => {
     const m = new Map<string, { rows: OORCRow[]; sumTarget: number; sumAccomp: number }>();
@@ -989,6 +995,12 @@ function PGSDashboard({ data }: { data: PGSRow[] }) {
     setDonutSelection(selectedPerspective === 'All' ? 'AGG_PERSPECTIVE' : (firstIdx >= 0 ? `MEASURE|${firstIdx}` : 'AGG_PERSPECTIVE'));
   }, [selectedPerspective]);
 
+  useEffect(() => {
+    if (quarterlyQuarterFilter !== 'All' && !allowedQuarters.includes(quarterlyQuarterFilter)) {
+      setQuarterlyQuarterFilter('All');
+    }
+  }, [selectedSemester, allowedQuarters, quarterlyQuarterFilter]);
+
   return (
     <div className="space-y-6">
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
@@ -1280,10 +1292,7 @@ function PGSDashboard({ data }: { data: PGSRow[] }) {
                 onChange={(e) => setQuarterlyQuarterFilter(e.target.value)}
               >
                 <option value="All">All Quarters</option>
-                <option value="Q1">Q1</option>
-                <option value="Q2">Q2</option>
-                <option value="Q3">Q3</option>
-                <option value="Q4">Q4</option>
+                {allowedQuarters.map(q => <option key={q} value={q}>{q}</option>)}
               </select>
             </div>
           </div>
