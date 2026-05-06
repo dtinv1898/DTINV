@@ -600,6 +600,26 @@ function OORCDashboard({ data }: { data: OORCRow[] }) {
               }}
               center={centerContent}
               aside={asideContent}
+              controlsLeft={(
+                <div className="flex items-center gap-2 w-full">
+                  <label className="text-sm text-muted-foreground">Filter OO:</label>
+                  <Select value={selectedOO} onValueChange={setSelectedOO}>
+                    <SelectTrigger className="w-full sm:w-[280px] h-auto min-h-9 px-3 py-2 text-sm text-left [&>span]:whitespace-normal [&>span]:line-clamp-3">
+                      <SelectValue placeholder="Filter OO" />
+                    </SelectTrigger>
+                    <SelectContent className="max-w-[calc(100vw-2rem)] sm:max-w-[400px]">
+                      <SelectItem value="All" className="whitespace-normal break-words py-2 text-sm leading-relaxed pr-6">
+                        All OOs
+                      </SelectItem>
+                      {ooList.map((oo) => (
+                        <SelectItem key={oo} value={oo} className="whitespace-normal break-words py-2 text-sm leading-relaxed pr-6">
+                          {oo}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
+              )}
             />
           );
         })()}
