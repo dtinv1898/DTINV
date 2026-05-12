@@ -2,8 +2,7 @@
 
 A web application developed for the **Department of Trade and Industry (DTI) - Nueva Vizcaya** for reporting, tracking, and data visualization of the organization's performance.
 
-The system features interactive dashboards for **Organizational Outcomes (OORC)** and the **Performance Governance System (PGS)**, allowing both public transparency and secure administrative control.
-
+The system features interactive dashboards for **Organizational Outcomes (OORC)** and the **Performance Governance System (PGS)**
 ## Key Features
 
 - **Public Dashboards:** Open access for users to view and interact with OORC and PGS performance metrics.
